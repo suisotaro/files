@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>RSA暗号</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>RSA暗号 by suisotaro</h1>
+  <div id="alert" hidden><div id="inner"><div id="top"><h1 id="title"></h1></div><div id="bottom"><div id="body"></div><button class="btn-a" onclick="alertclose()">閉じる</button></div></div></div>
+
+  <h2>・鍵作成</h2>
+  強度:
+  <select id="select">
+    <option value="3">3 弱い/早い</option>
+    <option value="4" selected>4 強い/遅い</option>
+  </select><br><br>
+  <button class="btn-a" onclick="RSAkeymake()">作成</button><br><br>
+
+  <h2>・暗号化/復号化</h2>
+  <p>テキスト(平文または暗号文)</p>
+  <textarea id="textinput" cols="50" rows="3"></textarea><br>
+  <p>鍵</p>
+  <textarea id="keyinput" cols="50" rows="3"></textarea><br>
+  <button class="btn-b" id="enc" onclick="enc()">暗号化</button>
+  <button class="btn-b" id="dec" onclick="dec()">複号化</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
