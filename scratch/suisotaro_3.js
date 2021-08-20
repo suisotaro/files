@@ -5,21 +5,37 @@ class suisotaro {
       name: 'suisotaroBlocks',
       blocks: [
         {
-          opcode: 'log',
-          blockType: Scratch.BlockType.COMMAND,
-          text: 'log [TEXT]',
+          opcode: 'modpow',
+          blockType: BlockType.REPORTER,
+          text: '[a]^[b]%[c]',
           arguments: {
-            TEXT: {
-              type: "string",
-              defaultValue: "hello"
+            a: {
+              type: "number",
+              defaultValue: 0
+            },
+            b: {
+              type: "number",
+              defaultValue: 0
+            },
+            c: {
+              type: "number",
+              defaultValue: 0
             }
           }
         }
       ]
     }
   }
-  log({TEXT}) {
-    console.log(TEXT);
+  modpow({a,b,c}) {
+    var n=1;
+    while(b>0){
+      if((b&1)==1){
+        n = (n*a)%c
+      }
+      b>>=1;
+      a=(a*a)%c
+    }
+    return n;
   }
 }
 
