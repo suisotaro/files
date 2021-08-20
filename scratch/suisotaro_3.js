@@ -5,9 +5,9 @@ class suisotaro {
       name: 'suisotaroBlocks',
       blocks: [
         {
-          opcode: 'alert',
+          opcode: 'log',
           blockType: Scratch.BlockType.COMMAND,
-          text: 'alert [TEXT]',
+          text: 'log [TEXT]',
           arguments: {
             TEXT: {
               type: "string",
@@ -18,8 +18,8 @@ class suisotaro {
       ]
     }
   }
-  alert({TEXT}) {
-    window.alert(TEXT);
+  log({TEXT}) {
+    console.log(TEXT);
   }
 }
 
