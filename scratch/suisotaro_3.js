@@ -5,19 +5,19 @@ class suisotaro {
       name: 'suisotaroBlocks',
       blocks: [
         {
-          opcode: 'modpow',
+          opcode: 'smodpow',
           blockType: 'reporter',
           text: '[a]^[b]%[c]',
           arguments: {
-            a: {
+            "a": {
               type: "number",
               defaultValue: 0
             },
-            b: {
+            "b": {
               type: "number",
               defaultValue: 0
             },
-            c: {
+            "c": {
               type: "number",
               defaultValue: 0
             }
@@ -25,8 +25,13 @@ class suisotaro {
         }
       ]
     }
-  },
-  modpow({a,b,c}) {
+  }
+  
+  smodpow({
+    a,
+    b,
+    c
+  }) {
     var n=1;
     while(b>0){
       if((b&1)==1){
