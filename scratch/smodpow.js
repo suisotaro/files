@@ -1,8 +1,8 @@
-class suisotaro {
+class suisotaroModPow {
   getInfo() {
     return {
-      id: "suisotaroBlocks",
-      name: "suisotaroBlocks",
+      id: "suisotaroBlocks-modpow",
+      name: "suisotaroBlocks-modpow",
       blocks: [
         {
           "opcode": "smodpow",
@@ -44,4 +44,4 @@ class suisotaro {
   }
 }
 
-Scratch.extensions.register(new suisotaro());
+Scratch.extensions.register(new suisotaroModPow());
