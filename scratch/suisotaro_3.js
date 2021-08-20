@@ -1,14 +1,14 @@
 class suisotaro {
   getInfo() {
     return {
-      id: 'suisotaroBlocks',
-      name: 'suisotaroBlocks',
+      id: "suisotaroBlocks",
+      name: "suisotaroBlocks",
       blocks: [
         {
-          opcode: 'smodpow',
-          blockType: 'reporter',
-          text: '[a]^[b]%[c]',
-          arguments: {
+          "opcode": "smodpow",
+          "blockType": "reporter",
+          "text": " [a] ^ [b] % [c] ",
+          "arguments": {
             "a": {
               type: "number",
               defaultValue: 0
@@ -24,7 +24,7 @@ class suisotaro {
           }
         }
       ]
-    }
+    };
   }
   
   smodpow({
