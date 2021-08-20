@@ -25,7 +25,7 @@ class suisotaro {
         }
       ]
     }
-  }
+  },
   modpow({a,b,c}) {
     var n=1;
     while(b>0){
