@@ -6,7 +6,7 @@ class suisotaro {
       blocks: [
         {
           opcode: 'modpow',
-          blockType: BlockType.REPORTER,
+          blockType: 'reporter',
           text: '[a]^[b]%[c]',
           arguments: {
             a: {
