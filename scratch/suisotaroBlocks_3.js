@@ -29,24 +29,24 @@ class suisotaroBlocks {
           }
         },
         {
-        	opcode: "ssend",
-        	blockType: "command",
-	        text: "send [MESSAGE]",
-	        arguments: {
+          opcode: "ssend",
+          blockType: "command",
+	  text: "send [MESSAGE]",
+	  arguments: {
             MESSAGE: {
-	            type: "string",
-	            defaultValue: "test"
+	      type: "string",
+	      defaultValue: "test"
             }
           }
         },
         {
-         	opcode: "sget",
-        	blockType: "hat",
-	        text: "get [MESSAGE]",
+          opcode: "sget",
+          blockType: "hat",
+	  text: "get [MESSAGE]",
           arguments: {
             MESSAGE: {
-	            type: "string",
-	            defaultValue: "test"
+	      type: "string",
+	      defaultValue: "test"
             }
           }
         }
@@ -66,14 +66,14 @@ class suisotaroBlocks {
     return n;
   }
   send1(args) {
-  	this.changed = true;
-	}
+    this.changed = true;
+  }
   hat1(args) {
-	  var rtn = this.changed && (!this.lasthat);
+    var rtn = this.changed && (!this.lasthat);
     this.changed = false;
-  	this.lasthat = rtn;
-	  return rtn;
-	}
+    this.lasthat = rtn;
+    return rtn;
+  }
 }
 
 Scratch.extensions.register(new suisotaroBlocks());
