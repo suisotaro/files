@@ -65,10 +65,12 @@ class suisotaroBlocks {
     }
     return n;
   }
-  send1(args) {
+
+  ssend(args) {
     this.changed = true;
   }
-  hat1(args) {
+
+  sget(args) {
     var rtn = this.changed && (!this.lasthat);
     this.changed = false;
     this.lasthat = rtn;
