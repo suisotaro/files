@@ -29,27 +29,16 @@ class suisotaroBlocks {
           }
         },
         {
-          opcode: "ssend",
+          opcode: "slog",
           blockType: "command",
-	  text: "send [MESSAGE]",
+	  text: "log [message]",
 	  arguments: {
-            MESSAGE: {
+            message: {
 	      type: "string",
 	      defaultValue: "test"
             }
           }
-        },
-        {
-          opcode: "sget",
-          blockType: "hat",
-	  text: "get [MESSAGE]",
-          arguments: {
-            MESSAGE: {
-	      type: "string",
-	      defaultValue: "test"
-            }
-          }
-        }
+	}
       ]
     };
   }
@@ -66,15 +55,8 @@ class suisotaroBlocks {
     return n;
   }
 
-  ssend(args) {
-    this.changed = true;
-  }
-
-  sget(args) {
-    var rtn = this.changed && (!this.lasthat);
-    this.changed = false;
-    this.lasthat = rtn;
-    return rtn;
+  ssend({message}) {
+    console.log(message);
   }
 }
 
