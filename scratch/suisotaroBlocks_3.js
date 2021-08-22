@@ -7,7 +7,7 @@ class suisotaroBlocks {
       id: "suisotaroBlocks",
       name: "suisotaroBlocks",
       menuIconURI: menuIconURI,
-      //blockIconURI: blockIconURI,
+      color1: '#ff4c4c',
       blocks: [
         {
           opcode: "smodpow",
@@ -27,18 +27,7 @@ class suisotaroBlocks {
               defaultValue: 0
             }
           }
-        },
-        {
-          opcode: "slog",
-          blockType: "command",
-	  text: "log [message]",
-	  arguments: {
-            message: {
-	      type: "string",
-	      defaultValue: "test"
-            }
-          }
-	}
+        }
       ]
     };
   }
@@ -53,10 +42,6 @@ class suisotaroBlocks {
       a=(a*a)%c
     }
     return n;
-  }
-
-  ssend({message}) {
-    console.log(message);
   }
 }
 
