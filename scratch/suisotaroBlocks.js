@@ -5,6 +5,7 @@ class suisotaroBlocks {
     return {
       id: "suisotaroBlocks",
       name: "suisotaroBlocks",
+      docsURI: "https://suisotaro.github.io/files/scratch/",
       menuIconURI: icon,
       color1: "#ff4c4c",
       color2: "#e64444",
