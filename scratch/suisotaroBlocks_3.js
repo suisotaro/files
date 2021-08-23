@@ -27,8 +27,7 @@ class suisotaroBlocks {
               defaultValue: 0
             }
           }
-        },
-        {
+        },{
           opcode: "sbif",
           blockType: "reporter",
           text: "[boolean] ? [a] : [b]",
@@ -59,23 +58,11 @@ class suisotaroBlocks {
         },{
           opcode: "sbsend",
           blockType: "command",
-          text: "send [message]",
-          arguments: {
-            message: {
-              type: "string",
-              defaultValue: "test"
-            }
-          }
+          text: "send"
         },{
           opcode: "sbhat",
           blockType: "hat",
-          text: "send [message]",
-          arguments: {
-            message: {
-              type: "string",
-              defaultValue: "test"
-            }
-          }
+          text: "hat"
         }
       ]
     };
@@ -112,13 +99,13 @@ class suisotaroBlocks {
   sbsend({message}){
     this["sbsend$" + message] = true;
   }
-  
-  sbhat({message}) {
-	  var rtn = this["sbsend$" + message] && (!this.lasthat);
-	  this["sbsend$" + message] = false;
-  	this.lasthat = rtn;
-	  return rtn;
-	}
+
+  sbhat() {
+    var rtn = this.changed && (!this.lasthat);
+    this.changed = false;
+    this.lasthat = rtn;
+    return rtn;
+  }
 }
 
 Scratch.extensions.register(new suisotaroBlocks());
