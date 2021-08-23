@@ -6,6 +6,8 @@ class suisotaroBlocks {
       id: "suisotaroBlocks",
       name: "suisotaroBlocks",
       menuIconURI: menuIconURI,
+      color1: '#ff4c4c',
+      color2: '#e64444',
       blocks: [
         {
           opcode: "sbModPow",
