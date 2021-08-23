@@ -53,7 +53,17 @@ class suisotaroBlocks {
           arguments: {
             URL: {
               type: "string",
-              defaultValue: "https://exsample.com/text.txt"
+              defaultValue: ""
+            }
+          }
+        },{
+          opcode: "sbsend",
+          blockType: "command",
+          text: "send [message]",
+          arguments: {
+            message: {
+              type: "string",
+              defaultValue: "test"
             }
           }
         }
@@ -61,7 +71,7 @@ class suisotaroBlocks {
     };
   }
   
-  sbModPow({a, b, c}) {
+  sbmodpow({a, b, c}) {
     var n=1;
     while(b>0){
       if((b&1)==1){
@@ -87,6 +97,10 @@ class suisotaroBlocks {
     return fetch(URL)
       .then(r => r.text())
       .catch(() => '');
+  }
+  
+  sbsend({message}){
+    this["sbsend$" + message] = true;
   }
 }
 
