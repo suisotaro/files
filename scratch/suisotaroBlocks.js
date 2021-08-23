@@ -89,7 +89,6 @@ class suisotaroBlocks {
       ],
       menus: {
         sbpselect: {
-          acceptReporters: true,
           items: [{ text: "エンコード", value: "encode"}, {text: "デコード", value: "decode"}]
         }
       }
@@ -97,15 +96,18 @@ class suisotaroBlocks {
   }
   
   sbmodpow({a, b, c}) {
-    var n=1;
-    while(b>0){
-      if((b&1)==1){
-        n = (n*a)%c
+    a = BigInt(a);
+    b = BigInt(b);
+    c = BigInt(c);
+    var n = 1n;
+    while(b>0n){
+      if((b&1n)==1){
+        n = (n*a)%c;
       }
-      b>>=1;
-      a=(a*a)%c
+      b>>=1n;
+      a=(a*a)%c;
     }
-    return n;
+    return n.toString([10]);
   }
   
   sbif({boolean, a, b}) {
