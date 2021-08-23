@@ -97,7 +97,7 @@ class suisotaroBlocks {
   }
   
   sbsend({message}){
-    this["sbsend$" + message] = true;
+    this.changed = true;
   }
 
   sbhat() {
