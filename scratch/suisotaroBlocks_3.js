@@ -52,17 +52,21 @@ class suisotaroBlocks {
           arguments: {
             URL: {
               type: "string",
-              defaultValue: "https://suisotaro.github.io/files/scratch/suisotaroBlocks_3.js"
+              defaultValue: "data:,Hello%2C%20World!"
             }
           }
         },{
           opcode: "sbblob",
           blockType: "reporter",
-          text: "blob [TEXT]",
+          text: "blob [TEXT] [MIME]",
           arguments: {
             TEXT: {
               type: "string",
               defaultValue: "サンプル"
+            },
+            MIME: {
+              type: "string",
+              defaultValue: "text/plain"
             }
           }
         },{
@@ -119,8 +123,8 @@ class suisotaroBlocks {
       .catch(() => '');
   }
   
-  sbblob({TEXT}) {
-    var blob = new Blob([TEXT],{type:"text/plain"});
+  sbblob({TEXT, MIME}) {
+    var blob = new Blob([TEXT],{type: MIME});
     return URL.createObjectURL(blob);
   }
   
