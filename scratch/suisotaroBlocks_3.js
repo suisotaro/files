@@ -10,7 +10,7 @@ class suisotaroBlocks {
       color2: '#e64444',
       blocks: [
         {
-          opcode: "sbModPow",
+          opcode: "sbmodpow",
           blockType: "reporter",
           text: "[a] ^ [b] % [c]",
           arguments: {
@@ -46,6 +46,16 @@ class suisotaroBlocks {
               defaultValue: "b"
             }
           }
+        },{
+          opcode: "sbget",
+          blockType: "reporter",
+          text: "GET [URL]",
+          arguments: {
+            URL: {
+              type: "string",
+              defaultValue: "https://exsample.com/text.txt"
+            }
+          }
         }
       ]
     };
@@ -71,6 +81,12 @@ class suisotaroBlocks {
       re = b;
     }
     return re;
+  }
+  
+  sbget({URL}) {
+    return fetch(URL)
+      .then(r => r.text())
+      .catch(() => '');
   }
 }
 
