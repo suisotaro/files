@@ -66,6 +66,16 @@ class suisotaroBlocks {
               defaultValue: "test"
             }
           }
+        },{
+          opcode: "sbhat",
+          blockType: "hat",
+          text: "send [message]",
+          arguments: {
+            message: {
+              type: "string",
+              defaultValue: "test"
+            }
+          }
         }
       ]
     };
@@ -102,6 +112,13 @@ class suisotaroBlocks {
   sbsend({message}){
     this["sbsend$" + message] = true;
   }
+  
+  sbhat({message}) {
+	  var rtn = this["sbsend$" + message] && (!this.lasthat);
+	  this["sbsend$" + message] = false;
+  	this.lasthat = rtn;
+	  return rtn;
+	}
 }
 
 Scratch.extensions.register(new suisotaroBlocks());
