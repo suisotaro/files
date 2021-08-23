@@ -65,6 +65,20 @@ class suisotaroBlocks {
               defaultValue: "サンプル"
             }
           }
+        },{
+          opcode: "sbp",
+          blockType: "reporter",
+          text: "[text] を [type] する",
+          arguments: {
+            text: {
+              type: "string",
+              defaultValue: "サンプル"
+            },
+            type: {
+              type: "string",
+              defaultValue: "encode"
+            }
+          }
         }
       ]
     };
@@ -101,6 +115,16 @@ class suisotaroBlocks {
   sbblob({TEXT}) {
     var blob = new Blob([TEXT],{type:"text/plain"});
     return URL.createObjectURL(blob);
+  }
+  
+  sbp({type, url}) {
+    var re;
+    if(type == "encode"){
+      re = encodeURI(url);
+    } else{
+      re = decodeURI(url);
+    }
+    return re;
   }
 }
 
