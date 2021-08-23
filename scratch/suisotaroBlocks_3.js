@@ -8,9 +8,9 @@ class suisotaroBlocks {
       menuIconURI: menuIconURI,
       blocks: [
         {
-          opcode: "smodpow",
+          opcode: "sbModPow",
           blockType: "reporter",
-          text: " [a] ^ [b] % [c] ",
+          text: "[a] ^ [b] % [c]",
           arguments: {
             a: {
               type: "number",
@@ -25,12 +25,31 @@ class suisotaroBlocks {
               defaultValue: 0
             }
           }
+        },
+        {
+          opcode: "sbif",
+          blockType: "reporter",
+          text: "[boolean] ? [a] : [b]",
+          arguments: {
+            boolean: {
+              type: "Boolean",
+              defaultValue: true
+            },
+            a: {
+              type: "string",
+              defaultValue: "a"
+            },
+            b: {
+              type: "string",
+              defaultValue: "b"
+            }
+          }
         }
       ]
     };
   }
   
-  smodpow({a, b, c}) {
+  sbModPow({a, b, c}) {
     var n=1;
     while(b>0){
       if((b&1)==1){
@@ -40,6 +59,16 @@ class suisotaroBlocks {
       a=(a*a)%c
     }
     return n;
+  }
+  
+  sbif({boolean, a, b}) {
+    var re;
+    if(boolean){
+      re = a;
+    } else{
+      re = b;
+    }
+    return re;
   }
 }
 
