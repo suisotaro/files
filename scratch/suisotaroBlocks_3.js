@@ -6,8 +6,8 @@ class suisotaroBlocks {
       id: "suisotaroBlocks",
       name: "suisotaroBlocks",
       menuIconURI: icon,
-      color1: '#ff4c4c',
-      color2: '#e64444',
+      color1: "#ff4c4c",
+      color2: "#e64444",
       blocks: [
         {
           opcode: "sbmodpow",
@@ -52,7 +52,7 @@ class suisotaroBlocks {
           arguments: {
             URL: {
               type: "string",
-              defaultValue: "https://"
+              defaultValue: "https://suisotaro.github.io/files/scratch/suisotaroBlocks_3.js"
             }
           }
         },{
@@ -96,11 +96,11 @@ class suisotaroBlocks {
       .catch(() => '');
   }
   
-  sbsend(){
+  sbsend(args){
     this.changed = true;
   }
 
-  sbhat() {
+  sbhat(args) {
     var rtn = this.changed && (!this.lasthat);
     this.changed = false;
     this.lasthat = rtn;
