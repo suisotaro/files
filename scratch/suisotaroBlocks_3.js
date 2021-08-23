@@ -68,19 +68,26 @@ class suisotaroBlocks {
         },{
           opcode: "sbp",
           blockType: "reporter",
-          text: "[text] を [type] する",
+          text: "[url] を [type] する",
           arguments: {
-            text: {
+            url: {
               type: "string",
               defaultValue: "サンプル"
             },
             type: {
               type: "string",
-              defaultValue: "encode"
+              defaultValue: "encode",
+              menu: "sbpselect"
             }
           }
         }
-      ]
+      ],
+      menus: {
+        sbpselect: {
+          acceptReporters: true,
+          items: [{ text: "エンコード", value: "encode"}, {text: "デコード", value: "decode"}]
+        }
+      }
     };
   }
   
