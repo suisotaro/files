@@ -56,13 +56,15 @@ class suisotaroBlocks {
             }
           }
         },{
-          opcode: "sbsend",
-          blockType: "command",
-          text: "send"
-        },{
-          opcode: "sbhat",
-          blockType: "hat",
-          text: "hat"
+          opcode: "sbblob",
+          blockType: "reporter",
+          text: "blob [TEXT]",
+          arguments: {
+            TEXT: {
+              type: "string",
+              defaultValue: "サンプル"
+            }
+          }
         }
       ]
     };
@@ -96,15 +98,9 @@ class suisotaroBlocks {
       .catch(() => '');
   }
   
-  sbsend(args){
-    this.changed = true;
-  }
-
-  sbhat(args) {
-    var rtn = this.changed && (!this.lasthat);
-    this.changed = false;
-    this.lasthat = rtn;
-    return rtn;
+  sbblob({TEXT}) {
+    var blob = new Blob([TEXT],{type:"text/plain"});
+    return URL.createObjectURL(blob);
   }
 }
 
