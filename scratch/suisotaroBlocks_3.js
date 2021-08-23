@@ -52,7 +52,7 @@ class suisotaroBlocks {
           arguments: {
             URL: {
               type: "string",
-              defaultValue: ""
+              defaultValue: "https://"
             }
           }
         },{
