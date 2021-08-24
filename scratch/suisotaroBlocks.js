@@ -272,7 +272,7 @@ class suisotaroBlocks {
   }
   
   sbisPrime(args){
-    c=BigInt(args.a);
+    var c=BigInt(args.a);
     if(c<=1){
       return false
     }
