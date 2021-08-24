@@ -129,7 +129,7 @@ class suisotaroBlocks {
       b>>=1n;
       a=(a*a)%c;
     }
-    return n.toString([10]);
+    return n.toString(10);
   }
   
   sbif({boolean, a, b}) {
@@ -187,10 +187,9 @@ class suisotaroBlocks {
         re = n1 ** n2;
         break;
       default:
-        re = "error!";
         break;
     }
-    return re;
+    return re.toString(10);
   }
 }
 
