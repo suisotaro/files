@@ -11,6 +11,98 @@ class suisotaroBlocks {
       color2: "#e64444",
       blocks: [
         {
+          opcode: "sbnumber",
+          blockType: "reporter",
+          text: "数値　[number]",
+          arguments: {
+            number: {
+              type: "number",
+              defaultValue: "0"
+            }
+          }
+        },
+        {
+          opcode: "sbif",
+          blockType: "reporter",
+          text: "[boolean] ? [a] : [b]",
+          arguments: {
+            boolean: {
+              type: "Boolean",
+              defaultValue: false
+            },
+            a: {
+              type: "string",
+              defaultValue: "a"
+            },
+            b: {
+              type: "string",
+              defaultValue: "b"
+            }
+          }
+        },
+        {
+          opcode: "sbget",
+          blockType: "reporter",
+          text: "GET [URL]",
+          arguments: {
+            URL: {
+              type: "string",
+              defaultValue: "data:,Hello%2C%20World!"
+            }
+          }
+        },
+        {
+          opcode: "sbblob",
+          blockType: "reporter",
+          text: "blob [TEXT] [MIME]",
+          arguments: {
+            TEXT: {
+              type: "string",
+              defaultValue: "サンプル"
+            },
+            MIME: {
+              type: "string",
+              defaultValue: "text/plain"
+            }
+          }
+        },
+        {
+          opcode: "sbp",
+          blockType: "reporter",
+          text: "[url] を [type] する",
+          arguments: {
+            url: {
+              type: "string",
+              defaultValue: "サンプル"
+            },
+            type: {
+              type: "string",
+              defaultValue: "encode",
+              menu: "sbpselect"
+            }
+          }
+        },
+        {
+          opcode: "sbcalc",
+          blockType: "reporter",
+          text: "[a] [operator] [b]",
+          arguments: {
+            a: {
+              type: "string",
+              defaultValue: "0"
+            },
+            b: {
+              type: "string",
+              defaultValue: "0"
+            },
+            operator: {
+              type: "string",
+              defaultValue: "add",
+              menu: "sboperator"
+            }
+          }
+        },
+        {
           opcode: "sbmodpow",
           blockType: "reporter",
           text: "[a] ^ [b] % [c]",
@@ -28,82 +120,6 @@ class suisotaroBlocks {
               defaultValue: 0
             }
           }
-        },{
-          opcode: "sbif",
-          blockType: "reporter",
-          text: "[boolean] ? [a] : [b]",
-          arguments: {
-            boolean: {
-              type: "Boolean",
-              defaultValue: true
-            },
-            a: {
-              type: "string",
-              defaultValue: "a"
-            },
-            b: {
-              type: "string",
-              defaultValue: "b"
-            }
-          }
-        },{
-          opcode: "sbget",
-          blockType: "reporter",
-          text: "GET [URL]",
-          arguments: {
-            URL: {
-              type: "string",
-              defaultValue: "data:,Hello%2C%20World!"
-            }
-          }
-        },{
-          opcode: "sbblob",
-          blockType: "reporter",
-          text: "blob [TEXT] [MIME]",
-          arguments: {
-            TEXT: {
-              type: "string",
-              defaultValue: "サンプル"
-            },
-            MIME: {
-              type: "string",
-              defaultValue: "text/plain"
-            }
-          }
-        },{
-          opcode: "sbp",
-          blockType: "reporter",
-          text: "[url] を [type] する",
-          arguments: {
-            url: {
-              type: "string",
-              defaultValue: "サンプル"
-            },
-            type: {
-              type: "string",
-              defaultValue: "encode",
-              menu: "sbpselect"
-            }
-          }
-        },{
-          opcode: "sbcalc",
-          blockType: "reporter",
-          text: "[number1] [operator] [number2]",
-          arguments: {
-            number1: {
-              type: "string",
-              defaultValue: "0"
-            },
-            number2: {
-              type: "string",
-              defaultValue: "0"
-            },
-            operator: {
-              type: "string",
-              defaultValue: "add",
-              menu: "sboperator"
-            }
-          }
         }
       ],
       menus: {
@@ -117,6 +133,10 @@ class suisotaroBlocks {
     };
   }
   
+  sbnumber({number}) {
+    return number;
+  }
+    
   sbmodpow({a, b, c}) {
     a = BigInt(a);
     b = BigInt(b);
@@ -163,28 +183,28 @@ class suisotaroBlocks {
     return re;
   }
   
-  sbcalc({number1, number2, operator}) {
-    var n1 = BigInt(number1);
-    var n2 = BigInt(number2);
+  sbcalc({a, b, operator}) {
+    a = BigInt(a);
+    b = BigInt(b);
     var re;
     switch (operator) {
       case "add":
-        re = n1 + n2;
+        re = a + b;
         break;
       case "sub":
-        re = n1 - n2;
+        re = a - b;
         break;
       case "mult":
-        re = n1 * n2;
+        re = a * b;
         break;
       case "div":
-        re = n1 / n2;
+        re = a / b;
         break;
       case "mod":
-        re = n1 % n2;
+        re = a % b;
         break;
       case "exp":
-        re = n1 ** n2;
+        re = a ** b;
         break;
       default:
         break;
