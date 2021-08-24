@@ -120,6 +120,18 @@ class suisotaroBlocks {
               defaultValue: 0
             }
           }
+        },
+        {
+          opcode: "sbconditional",
+          blockType: "conditional",
+          text: "conditional [boolean]",
+          branchCount: 2,
+          arguments: {
+            boolean: {
+              type: "Boolean",
+              defaultValue: false
+            }
+          }
         }
       ],
       menus: {
@@ -133,14 +145,14 @@ class suisotaroBlocks {
     };
   }
   
-  sbnumber({number}) {
-    return number;
+  sbnumber(args) {
+    return args.number;
   }
     
-  sbmodpow({a, b, c}) {
-    a = BigInt(a);
-    b = BigInt(b);
-    c = BigInt(c);
+  sbmodpow(args) {
+    var a = BigInt(args.a);
+    var b = BigInt(args.b);
+    var c = BigInt(args.c);
     var n = 1n;
     while(b>0n){
       if((b&1n)==1){
@@ -152,42 +164,42 @@ class suisotaroBlocks {
     return n.toString(10);
   }
   
-  sbif({boolean, a, b}) {
+  sbif(args) {
     var re;
-    if(boolean){
-      re = a;
+    if(args.boolean){
+      re = args.a;
     } else{
-      re = b;
+      re = args.b;
     }
     return re;
   }
   
-  sbget({URL}) {
-    return fetch(URL)
+  sbget(args) {
+    return fetch(args.URL)
       .then(r => r.text())
       .catch(() => '');
   }
   
-  sbblob({TEXT, MIME}) {
-    var blob = new Blob([TEXT],{type: MIME});
+  sbblob(args) {
+    var blob = new Blob([args.TEXT],{type: args.MIME});
     return URL.createObjectURL(blob);
   }
   
-  sbp({type, url}) {
+  sbp(args) {
     var re;
-    if(type == "encode"){
-      re = encodeURI(url);
+    if(args.type == "encode"){
+      re = encodeURI(args.url);
     } else{
-      re = decodeURI(url);
+      re = decodeURI(args.url);
     }
     return re;
   }
   
-  sbcalc({a, b, operator}) {
-    a = BigInt(a);
-    b = BigInt(b);
+  sbcalc(args) {
+    var a = BigInt(args.a);
+    var b = BigInt(args.b);
     var re;
-    switch (operator) {
+    switch (args.operator) {
       case "add":
         re = a + b;
         break;
@@ -210,6 +222,12 @@ class suisotaroBlocks {
         break;
     }
     return re.toString(10);
+  }
+  
+  sbconditional(args, util){
+    if(args.boolean){
+      util.startBranch(1, true);
+    }
   }
 }
 
