@@ -120,18 +120,6 @@ class suisotaroBlocks {
               defaultValue: 0
             }
           }
-        },
-        {
-          opcode: "sbconditional",
-          blockType: "conditional",
-          text: "conditional [boolean]",
-          branchCount: 2,
-          arguments: {
-            boolean: {
-              type: "Boolean",
-              defaultValue: false
-            }
-          }
         }
       ],
       menus: {
@@ -222,12 +210,6 @@ class suisotaroBlocks {
         break;
     }
     return re.toString(10);
-  }
-  
-  sbconditional(args, util){
-    if(args.boolean){
-      util.startBranch();
-    }
   }
 }
 
