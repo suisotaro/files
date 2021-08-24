@@ -85,11 +85,33 @@ class suisotaroBlocks {
               menu: "sbpselect"
             }
           }
+        },{
+          opcode: "sbcalc",
+          blockType: "reporter",
+          text: "[number1] [type] [number2]",
+          arguments: {
+            number1: {
+              type: "string",
+              defaultValue: "0"
+            },
+            number2: {
+              type: "string",
+              defaultValue: "0"
+            },
+            operator: {
+              type: "string",
+              defaultValue: "add",
+              menu: "operator"
+            }
+          }
         }
       ],
       menus: {
         sbpselect: {
-          items: [{ text: "エンコード", value: "encode"}, {text: "デコード", value: "decode"}]
+          items: [{text: "エンコード", value: "encode"}, {text: "デコード", value: "decode"}]
+        },
+        operator: {
+          items: [{text: "+", value: "add"},{text: "-", value: "sub"},{text: "*", value: "mult"},{text: "/", value: "div"},{text: "%", value: "mod"},{text: "^", value: "exp"}]
         }
       }
     };
@@ -137,6 +159,36 @@ class suisotaroBlocks {
       re = encodeURI(url);
     } else{
       re = decodeURI(url);
+    }
+    return re;
+  }
+  
+  sbcalc({number1, number2, operator}) {
+    var n1 = BigInt(number1);
+    var n2 = BigInt(number2);
+    var re;
+    switch (operator) {
+      case "add":
+        re = n1 + n2;
+        break;
+      case "sub":
+        re = n1 - n2;
+        break;
+      case "mult":
+        re = n1 * n2;
+        break;
+      case "div":
+        re = n1 / n2;
+        break;
+      case "mod":
+        re = n1 % n2;
+        break;
+      case "exp":
+        re = n1 ** n2;
+        break;
+      default:
+        re = "error!";
+        break;
     }
     return re;
   }
