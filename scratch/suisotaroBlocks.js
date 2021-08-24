@@ -108,15 +108,15 @@ class suisotaroBlocks {
           text: "[a] ^ [b] % [c]",
           arguments: {
             a: {
-              type: "number",
+              type: "string",
               defaultValue: 0
             },
             b: {
-              type: "number",
+              type: "string",
               defaultValue: 0
             },
             c: {
-              type: "number",
+              type: "string",
               defaultValue: 0
             }
           }
