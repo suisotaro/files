@@ -120,6 +120,36 @@ class suisotaroBlocks {
               defaultValue: 0
             }
           }
+        },
+        {
+          opcode: "sbgcd",
+          blockType: "reporter",
+          text: "[a] と [b] の最大公約数",
+          arguments: {
+            a: {
+              type: "string",
+              defaultValue: 0
+            },
+            b: {
+              type: "string",
+              defaultValue: 0
+            }
+          }
+        },
+        {
+          opcode: "sblcm",
+          blockType: "reporter",
+          text: "[a] と [b] の最小公倍数",
+          arguments: {
+            a: {
+              type: "string",
+              defaultValue: 0
+            },
+            b: {
+              type: "string",
+              defaultValue: 0
+            }
+          }
         }
       ],
       menus: {
@@ -135,21 +165,6 @@ class suisotaroBlocks {
   
   sbnumber(args) {
     return args.number;
-  }
-    
-  sbmodpow(args) {
-    var a = BigInt(args.a);
-    var b = BigInt(args.b);
-    var c = BigInt(args.c);
-    var n = 1n;
-    while(b>0n){
-      if((b&1n)==1){
-        n = (n*a)%c;
-      }
-      b>>=1n;
-      a=(a*a)%c;
-    }
-    return n.toString(10);
   }
   
   sbif(args) {
@@ -210,6 +225,33 @@ class suisotaroBlocks {
         break;
     }
     return re.toString(10);
+  }
+  
+  sbmodpow(args) {
+    var a = BigInt(args.a);
+    var b = BigInt(args.b);
+    var c = BigInt(args.c);
+    var n = 1n;
+    while(b>0n){
+      if((b&1n)==1){
+        n = (n*a)%c;
+      }
+      b>>=1n;
+      a=(a*a)%c;
+    }
+    return n.toString(10);
+  }
+  
+  sbgcd(args) {
+    if(args.b==0){
+      return args.a;
+    }
+    return this.sbgcd(args.b,args.a%args.b);
+  }
+  
+  sblcm(args) {
+    var g=(n,m)=>m?g(m,n%m):n;
+    return a*b/g(a,b);
   }
 }
 
