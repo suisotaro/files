@@ -128,11 +128,11 @@ class suisotaroBlocks {
           arguments: {
             a: {
               type: "string",
-              defaultValue: 0
+              defaultValue: 1
             },
             b: {
               type: "string",
-              defaultValue: 0
+              defaultValue: 1
             }
           }
         },
@@ -143,11 +143,11 @@ class suisotaroBlocks {
           arguments: {
             a: {
               type: "string",
-              defaultValue: 0
+              defaultValue: 1
             },
             b: {
               type: "string",
-              defaultValue: 0
+              defaultValue: 1
             }
           }
         }
@@ -164,7 +164,7 @@ class suisotaroBlocks {
   }
   
   sbnumber(args) {
-    return args.number;
+    return Number(args.number);
   }
   
   sbif(args) {
@@ -243,15 +243,21 @@ class suisotaroBlocks {
   }
   
   sbgcd(args) {
-    if(args.b==0){
-      return args.a;
+    function gcd(a, b) {
+      if(b==0){
+        return a;
+      }
+      return this.gcd(b,a%b);
     }
-    return this.sbgcd(args.b,args.a%args.b);
+    return gcd(BigInt(args.a), BigInt(args.b)).toString(10);
   }
   
   sblcm(args) {
-    var g=(n,m)=>m?g(m,n%m):n;
-    return args.a*args.b/g(args.a,args.b);
+    function lcm(a, b) {
+      var g=(n,m)=>m?g(m,n%m):n;
+      return a*b/g(a,b);
+    }
+    return lcm(BigInt(args.a), BigInt(args.b)).toString(10);
   }
 }
 
