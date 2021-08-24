@@ -251,7 +251,7 @@ class suisotaroBlocks {
   
   sblcm(args) {
     var g=(n,m)=>m?g(m,n%m):n;
-    return a*b/g(a,b);
+    return args.a*args.b/g(args.a,args.b);
   }
 }
 
