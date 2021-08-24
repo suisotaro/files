@@ -226,7 +226,7 @@ class suisotaroBlocks {
   
   sbconditional(args, util){
     if(args.boolean){
-      util.startBranch(1, true);
+      util.startBranch();
     }
   }
 }
