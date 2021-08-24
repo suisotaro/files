@@ -88,7 +88,7 @@ class suisotaroBlocks {
         },{
           opcode: "sbcalc",
           blockType: "reporter",
-          text: "[number1] [type] [number2]",
+          text: "[number1] [operator] [number2]",
           arguments: {
             number1: {
               type: "string",
@@ -101,7 +101,7 @@ class suisotaroBlocks {
             operator: {
               type: "string",
               defaultValue: "add",
-              menu: "operator"
+              menu: "sboperator"
             }
           }
         }
@@ -110,7 +110,7 @@ class suisotaroBlocks {
         sbpselect: {
           items: [{text: "エンコード", value: "encode"}, {text: "デコード", value: "decode"}]
         },
-        operator: {
+        sboperator: {
           items: [{text: "+", value: "add"},{text: "-", value: "sub"},{text: "*", value: "mult"},{text: "/", value: "div"},{text: "%", value: "mod"},{text: "^", value: "exp"}]
         }
       }
