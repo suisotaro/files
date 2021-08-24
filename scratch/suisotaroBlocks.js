@@ -247,13 +247,13 @@ class suisotaroBlocks {
       if(b==0){
         return a;
       }
-      return this.gcd(b,a%b);
+      return gcd(b,a%b);
     }
     return gcd(BigInt(args.a), BigInt(args.b)).toString(10);
   }
   
   sblcm(args) {
-    function lcm(a, b) {
+    function lcm(a, b){
       var g=(n,m)=>m?g(m,n%m):n;
       return a*b/g(a,b);
     }
