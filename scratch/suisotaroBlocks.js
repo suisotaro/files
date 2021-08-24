@@ -150,6 +150,17 @@ class suisotaroBlocks {
               defaultValue: 1
             }
           }
+        },
+        {
+          opcode: "sbisPrime",
+          blockType: "Boolean",
+          text: "[a] は素数か",
+          arguments: {
+            a: {
+              type: "string",
+              defaultValue: 7
+            }
+          }
         }
       ],
       menus: {
@@ -258,6 +269,26 @@ class suisotaroBlocks {
       return a*b/g(a,b);
     }
     return lcm(BigInt(args.a), BigInt(args.b)).toString(10);
+  }
+  
+  sbisPrime(args){
+    c=BigInt(args.a);
+    if(c<=1){
+      return false
+    }
+    if(2==c){
+      return true
+    }
+    if(0==c%2n){
+      return false
+    }
+    var b=c-1n;
+    for(var a=3n;a<=b;a+=2n){
+      if(0==c%a){
+        return false
+      }
+    }
+    return true
   }
 }
 
