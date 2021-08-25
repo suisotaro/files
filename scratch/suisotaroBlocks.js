@@ -172,17 +172,6 @@ class suisotaroBlocks {
               defaultValue: 7
             }
           }
-        },
-        {
-          opcode: "sbmakeprime",
-          blockType: "reporter",
-          text: "[a] 桁のランダムな素数",
-          arguments: {
-            a: {
-              type: "string",
-              defaultValue: 7
-            }
-          }
         }
       ],
       menus: {
@@ -322,15 +311,6 @@ class suisotaroBlocks {
       r+=rnd(0,9);
     }
     return r;
-  }
-  
-  sbmakeprime(args){
-    var e=true;
-    while(e){
-      var p=this.sbbigrnd({l:args.l});
-      e=!this.sbisPrime({p:p});
-    }
-    return p
   }
 }
 
