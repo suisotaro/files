@@ -161,6 +161,17 @@ class suisotaroBlocks {
               defaultValue: 7
             }
           }
+        },
+        {
+          opcode: "sbbigrnd",
+          blockType: "reporter",
+          text: "[a] 桁のランダムな数字",
+          arguments: {
+            a: {
+              type: "string",
+              defaultValue: 7
+            }
+          }
         }
       ],
       menus: {
@@ -289,6 +300,17 @@ class suisotaroBlocks {
       }
     }
     return true
+  }
+  
+  sbbigrnd(args) {
+    function rnd(a,b){
+      return Math.floor(Math.random()*(b+1-a)+a)
+    }
+    var r = "" + rnd(1,9);
+    for(var i=1n;i<args.a;i++){
+      r+=rnd(0,9);
+    }
+    return r;
   }
 }
 
