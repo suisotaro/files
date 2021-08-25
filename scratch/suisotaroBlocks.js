@@ -312,6 +312,15 @@ class suisotaroBlocks {
     }
     return r;
   }
+  
+  MakePrime(args){
+    var e=true;
+    while(e){
+      var p=this.sbbigrnd({l:args.l});
+      e=!this.sbisPrime({p:p});
+    }
+    return p
+  }
 }
 
 Scratch.extensions.register(new suisotaroBlocks());
