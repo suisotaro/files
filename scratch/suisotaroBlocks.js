@@ -179,7 +179,7 @@ class suisotaroBlocks {
           items: [{text: "エンコード", value: "encode"}, {text: "デコード", value: "decode"}]
         },
         sboperator: {
-          items: [{text: "+", value: "add"},{text: "-", value: "sub"},{text: "*", value: "mult"},{text: "/", value: "div"},{text: "%", value: "mod"},{text: "^", value: "exp"}]
+          items: [{text: "+", value: "add"},{text: "-", value: "sub"},{text: "*", value: "mult"},{text: "/", value: "div"},{text: "%", value: "mod"},{text: "^", value: "exp"},{text: ">", value: "gt"},{text: "<", value: "lt"}]
         }
       }
     };
@@ -243,10 +243,20 @@ class suisotaroBlocks {
       case "exp":
         re = a ** b;
         break;
+      case "gt":
+        re = a > b;
+        break;
+      case "lt":
+        re = a < b;
+        break;
       default:
         break;
     }
-    return re.toString(10);
+    if(typeof re == "bigint"){
+      return re.toString(10);
+    } else{
+      return re;
+    }
   }
   
   sbmodpow(args) {
