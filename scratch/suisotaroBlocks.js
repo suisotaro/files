@@ -172,6 +172,17 @@ class suisotaroBlocks {
               defaultValue: 7
             }
           }
+        },
+        {
+          opcode: "sbbool",
+          blockType: "Boolean",
+          text: "Boolean [bool]",
+          arguments: {
+            bool: {
+              type: "string",
+              defaultValue: "true"
+            }
+          }
         }
       ],
       menus: {
@@ -321,6 +332,10 @@ class suisotaroBlocks {
       r+=rnd(0,9);
     }
     return r;
+  }
+  
+  sbbool(args) {
+    return !!(args.bool);
   }
 }
 
