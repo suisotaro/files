@@ -22,6 +22,17 @@ class suisotaroBlocks {
           }
         },
         {
+          opcode: "sbboolean",
+          blockType: "Boolean",
+          text: "Boolean [boolean]",
+          arguments: {
+            boolean: {
+              type: "string",
+              defaultValue: "true"
+            }
+          }
+        },
+        {
           opcode: "sbif",
           blockType: "reporter",
           text: "[boolean] ? [a] : [b]",
@@ -172,17 +183,6 @@ class suisotaroBlocks {
               defaultValue: 7
             }
           }
-        },
-        {
-          opcode: "sbbool",
-          blockType: "Boolean",
-          text: "Boolean [bool]",
-          arguments: {
-            bool: {
-              type: "string",
-              defaultValue: "true"
-            }
-          }
         }
       ],
       menus: {
@@ -190,7 +190,7 @@ class suisotaroBlocks {
           items: [{text: "エンコード", value: "encode"}, {text: "デコード", value: "decode"}]
         },
         sboperator: {
-          items: [{text: "+", value: "add"},{text: "-", value: "sub"},{text: "*", value: "mult"},{text: "/", value: "div"},{text: "%", value: "mod"},{text: "^", value: "exp"},{text: ">", value: "gt"},{text: "<", value: "lt"}]
+          items: [{text: "+", value: "add"},{text: "-", value: "sub"},{text: "*", value: "mult"},{text: "/", value: "div"},{text: "%", value: "mod"},{text: "^", value: "exp"},{text: "=", value: "eq"},{text: ">", value: "gt"},{text: "<", value: "lt"}]
         }
       }
     };
@@ -198,6 +198,10 @@ class suisotaroBlocks {
   
   sbnumber(args) {
     return Number(args.number);
+  }
+  
+  sbboolean(args) {
+    return !!(args.boolean);
   }
   
   sbif(args) {
@@ -253,6 +257,9 @@ class suisotaroBlocks {
         break;
       case "exp":
         re = a ** b;
+        break;
+      case "eq":
+        re = a == b;
         break;
       case "gt":
         re = a > b;
@@ -332,10 +339,6 @@ class suisotaroBlocks {
       r+=rnd(0,9);
     }
     return r;
-  }
-  
-  sbbool(args) {
-    return !!(args.bool);
   }
 }
 
