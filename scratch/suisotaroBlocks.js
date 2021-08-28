@@ -114,6 +114,26 @@ class suisotaroBlocks {
           }
         },
         {
+          opcode: "sbcalc2",
+          blockType: "Boolean",
+          text: "[a] [operator] [b]",
+          arguments: {
+            a: {
+              type: "string",
+              defaultValue: "0"
+            },
+            b: {
+              type: "string",
+              defaultValue: "0"
+            },
+            operator: {
+              type: "string",
+              defaultValue: "eq",
+              menu: "sboperator2"
+            }
+          }
+        },
+        {
           opcode: "sbmodpow",
           blockType: "reporter",
           text: "[a] ^ [b] % [c]",
@@ -190,7 +210,10 @@ class suisotaroBlocks {
           items: [{text: "エンコード", value: "encode"}, {text: "デコード", value: "decode"}]
         },
         sboperator: {
-          items: [{text: "+", value: "add"},{text: "-", value: "sub"},{text: "*", value: "mult"},{text: "/", value: "div"},{text: "%", value: "mod"},{text: "^", value: "exp"},{text: "=", value: "eq"},{text: ">", value: "gt"},{text: "<", value: "lt"}]
+          items: [{text: "+", value: "add"},{text: "-", value: "sub"},{text: "*", value: "mult"},{text: "/", value: "div"},{text: "%", value: "mod"},{text: "^", value: "exp"}]
+        },
+        sboperator2: {
+          items: [{text: "=", value: "eq"},{text: ">", value: "gt"},{text: "<", value: "lt"}]
         }
       }
     };
@@ -258,6 +281,17 @@ class suisotaroBlocks {
       case "exp":
         re = a ** b;
         break;
+      default:
+        break;
+    }
+    return re.toString(10);
+  }
+  
+  sbcalc2(args) {
+    var a = BigInt(args.a);
+    var b = BigInt(args.b);
+    var re;
+    switch (args.operator) {
       case "eq":
         re = a == b;
         break;
@@ -270,11 +304,7 @@ class suisotaroBlocks {
       default:
         break;
     }
-    if(typeof re == "bigint"){
-      return re.toString(10);
-    } else{
-      return re;
-    }
+    return re;
   }
   
   sbmodpow(args) {
