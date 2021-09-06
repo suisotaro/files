@@ -5,6 +5,8 @@ var emsg = document.getElementById("errormsg");
 var output = document.getElementById("output");
 var m = true;
 
+var t = prompt("time?", "100");
+
 navigator.mediaDevices
   .getUserMedia({
     audio: false,
@@ -49,5 +51,5 @@ function check(){
   } else {
     output.innerText = "nodata";
   }
-  setTimeout(check,100);
+  setTimeout(check,t);
 }
