@@ -1,0 +1,25 @@
+body {
+  font-family: 'Ropa Sans', sans-serif;
+  color: #333;
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+}
+
+h1 {
+  margin: 10px 0;
+  font-size: 40px;
+}
+
+#canvas {
+  width: 100%;
+}
+
+#output {
+  margin-top: 20px;
+  background: #eee;
+  padding: 10px;
+  padding-bottom: 0;
+  padding-bottom: 10px;
+  word-wrap: break-word;
+}
