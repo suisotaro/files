@@ -1,6 +1,6 @@
 # files
 suisotaro's files
 
-- [/RSA](/RSA/)
-- [/scratch](/scratch/)
-- [/QR](/QR/)
+- [/RSA](./RSA/)
+- [/scratch](./scratch/)
+- [/QR](./QR/)
