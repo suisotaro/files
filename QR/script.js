@@ -41,15 +41,18 @@ function check(){
   canvas.width = video.videoWidth;
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
   var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  var code = jsQR(imageData.data, imageData.width, imageData.height)
+  var code = jsQR(imageData.data, imageData.width, imageData.height);
+  var codesave = null;
   if (code) {
     drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
     drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
     drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
     drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
     output.innerText = "data:" + code.data;
+    codesave = code.data;
   } else {
     output.innerText = "nodata";
+    console.log(codesave);
   }
   setTimeout(check,t);
 }
