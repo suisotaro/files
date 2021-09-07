@@ -1,4 +1,5 @@
 var popup={opens:false};popup.open=(a,b)=>{if(!popup.opens){popup.opens=true;popup.titleE.innerText=a;popup.bodyE.innerHTML=b;popup.alertE.hidden=false}};popup.close=()=>{popup.opens=false;popup.alertE.hidden=true};popup.f=(e,s=null)=>{var E=document.createElement(e);E.style=s;return E};popup.alertE=document.createElement("div");popup.alertE.hidden=true;popup.alertE.style="position:fixed;left:0;top:0;width:100%;height:100%;zIndex:9999;background-Color:#fff;opacity:90%;text-Align:center";document.body.appendChild(popup.alertE);popup.innerE=popup.f("div","width:400px;height:400px;border:solid;overflow:auto;position:fixed;left:calc(50% - 200px);top:calc(50% - 200px)");popup.alertE.appendChild(popup.innerE);popup.topE=popup.f("div",null);popup.innerE.appendChild(popup.topE);popup.titleE=popup.f("h1");popup.topE.appendChild(popup.titleE);popup.bottomE=popup.f("div",null);popup.innerE.appendChild(popup.bottomE);popup.bodyE=popup.f("div");popup.bottomE.appendChild(popup.bodyE);popup.buttonE=popup.f("button","display:inline-block;font-size:1em;padding:.3em 1em;text-decoration:none;color:#67c5ff;border:solid 2px #67c5ff;border-radius:transition:.4s");popup.buttonE.onclick=popup.close;popup.buttonE.innerText="CLOSE / 閉じる";popup.bottomE.appendChild(popup.buttonE);
+
 var video = document.getElementById("video");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
@@ -6,7 +7,7 @@ var emsg = document.getElementById("errormsg");
 var output = document.getElementById("output");
 var m = true;
 
-var t = prompt("time?", "100");
+var t = prompt("f/s?", "100");
 
 navigator.mediaDevices
   .getUserMedia({
