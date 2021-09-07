@@ -7,7 +7,8 @@ var emsg = document.getElementById("errormsg");
 var output = document.getElementById("output");
 var m = true;
 
-var t = prompt("f/s?", "100");
+var t = prompt("fps?", 10);
+t = 1000 / t;
 
 navigator.mediaDevices
   .getUserMedia({
