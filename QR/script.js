@@ -48,10 +48,9 @@ function check(){
     drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
     drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
     output.innerText = "data:" + code.data;
-    codesave = code.data;
+    console.log(code.data);
   } else {
     output.innerText = "nodata";
-    console.log(codesave);
   }
   setTimeout(check,t);
 }
