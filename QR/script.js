@@ -42,7 +42,6 @@ function check(){
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
   var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   var code = jsQR(imageData.data, imageData.width, imageData.height);
-  var codesave = null;
   if (code) {
     drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
     drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
