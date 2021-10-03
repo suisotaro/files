@@ -5,3 +5,4 @@ suisotaro's files
 - [/scratch](./scratch/)
 - [/QR](./QR/)
 - [/paiza](./paiza/)
+- [/Advertisement](./Advertisement/)
