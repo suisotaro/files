@@ -1,5 +1,8 @@
 <script>
+  var rnd1,rnd2;
   for(i=0;i<10;i++){
-    window.open('', Math.random()+"a", 'width=400,height=100');
+    rnd1 = Math.floor(Math.random() * 10001);
+    rnd2 = Math.floor(Math.random() * 10001);
+    window.open('', Math.random()+"a", `width=400,height=100,top=${rnd1},left=${rnd2}`);
   }
 </script>
