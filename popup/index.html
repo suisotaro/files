@@ -1,8 +1,11 @@
+<button onclick="open()">open</button>
 <script>
-  var rnd1,rnd2;
-  for(i=0;i<10;i++){
-    rnd1 = Math.floor(Math.random() * 1001);
-    rnd2 = Math.floor(Math.random() * 1001);
-    window.open('', Math.random()+"a", `width=400,height=100,top=${rnd1},left=${rnd2}`);
+  function open(){
+    var a = 0, b = 0;
+    for(i=0;i<10;i++){
+      a += 10;
+      b += 10;
+      window.open("", Math.random()+"a", `width=400,height=100,top=${a},left=${b}`);
+    }
   }
 </script>
