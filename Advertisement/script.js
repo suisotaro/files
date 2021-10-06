@@ -7,8 +7,9 @@ if(location.host == "www.youtube.com"){
   },30);
 }
 
-const newStyle = document.createElement("style");
-newStyle.innerText = ".adsbygoogle,.ytp-ad-overlay-container{display:none !important;}";
-document.getElementsByTagName("head")[0].appendChild(newStyle);
+var AdvertisementBlock = document.querySelectorAll(".adsbygoogle,.ytp-ad-overlay-container");
+AdvertisementBlock.forEach(function(e) {
+  e.style = "display:none !important;";
+});
 
 alert("広告ブロック🚫！\nby suisotaro");
