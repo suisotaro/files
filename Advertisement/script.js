@@ -7,8 +7,7 @@ if(location.host == "www.youtube.com"){
   },30);
 }
 
-var AdvertisementBlock = document.querySelectorAll(".adsbygoogle,.ytp-ad-overlay-container");
-AdvertisementBlock.forEach(function(e) {
+document.querySelectorAll(".adsbygoogle,.ytp-ad-overlay-container").forEach(function(e) {
   e.style = "display:none !important;";
 });
 
