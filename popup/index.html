@@ -1,11 +1,11 @@
-<button onclick="open()">open</button>
+<button onclick="winopen()">open</button>
 <script>
-  function open(){
+  function winopen(){
     var a = 0, b = 0;
-    for(i=0;i<10;i++){
+    for(i = 0; i < 10; i++){
       a += 10;
       b += 10;
-      window.open("", Math.random()+"a", `width=400,height=100,top=${a},left=${b}`);
+      window.open("", "win"+i, `width=400,height=100,top=${a},left=${b}`);
     }
   }
 </script>
