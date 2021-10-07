@@ -1,18 +1,1 @@
-<button onclick="winopen()">open</button>
-<script>
-  function winopen(){
-    if(confirm("ポップアップが大量にでるよ！")){
-      var a = 0, b = 0, win = [];
-      for(i = 0; i < 20; i++){
-        a += 10;
-        b += 10;
-        win.push(window.open("", "win"+i, `width=400,height=100,top=${a},left=${b}`));
-      }
-      setTimeout(() => {
-        win.forEach(w => {
-          w.close();
-        });
-      }, 3000);
-    }
-  }
-</script>
+<a href="javascript:x=document.createElement('script');x.src='//suisotaro.github.io/files/popup/script.js';document.getElementsByTagName('head')[0].appendChild(x);">open</a>
