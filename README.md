@@ -5,6 +5,6 @@ suisotaro's files
 - [/scratch](./scratch/)
 - [/QR](./QR/)
 - [/paiza](./paiza/)
-- [/Advertisement](./Advertisement/)
-- [/Earthquake](./Earthquake/)
+- [/広告ブロック](./Advertisement/)
+- [/地震](./Earthquake/)
 - [/popup](./popup/)
