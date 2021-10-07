@@ -6,3 +6,5 @@ suisotaro's files
 - [/QR](./QR/)
 - [/paiza](./paiza/)
 - [/Advertisement](./Advertisement/)
+- [/Earthquake](./Earthquake/)
+- [/popup](./popup/)
