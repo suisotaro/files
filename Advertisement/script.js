@@ -1,3 +1,8 @@
+try{
+  AdvertisementBlock;
+} catch{
+  AdvertisementBlock = false;
+}
 if(!AdvertisementBlock){
   if(location.host == "www.youtube.com"){
     setInterval(()=>{
