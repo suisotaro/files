@@ -1,8 +1,5 @@
-try{
-  AdvertisementBlock;
-} catch{
-  AdvertisementBlock = false;
-}
+var AdvertisementBlock = AdvertisementBlock | false;
+
 if(!AdvertisementBlock){
   if(location.host == "www.youtube.com"){
     setInterval(()=>{
@@ -12,18 +9,29 @@ if(!AdvertisementBlock){
       }
     },30);
   }
-
+  
+  var newStyle = document.createElement("style");
+  newStyle.innerText = ".adsbygoogle,.ytp-ad-overlay-container{display:none !important;}";
+  document.getElementsByTagName("head")[0].appendChild(newStyle);
+  
+  /*
   document.querySelectorAll(".adsbygoogle,.ytp-ad-overlay-container").forEach(function(e) {
     e.style = "display:none !important;";
   });
+  */
   
   AdvertisementBlock = true;
   
   alert("広告ブロック🚫！\nby suisotaro");
 } else {
+  var newStyle = document.createElement("style");
+  newStyle.innerText = '*[id*="ads"],*[name*="ads"],*[class*="ads"]{display:none !important;}';
+  document.getElementsByTagName("head")[0].appendChild(newStyle);
+  
+  /*
   document.querySelectorAll('*[id*="ads"],*[name*="ads"],*[class*="ads"]').forEach(function(e) {
     e.style = "display:none !important;";
   });
+  */
   alert("強力広告ブロック🚫しました！\nby suisotaro");
 }
-
