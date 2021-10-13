@@ -16,3 +16,6 @@ setTimeout(() => {
     w.close();
   });
 }, 3000);
+
+var w2 = window.open("", "win3", `width=400,height=400,top=100,left=100`);
+w2.onblur = w2.focus();
