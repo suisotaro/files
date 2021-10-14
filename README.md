@@ -8,3 +8,4 @@ suisotaro's files
 - [/広告ブロック](./Advertisement/)
 - [/地震](./Earthquake/)
 - [/popup](./popup/)
+- [/Fullscreen](./Fullscreen/)
