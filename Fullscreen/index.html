@@ -8,19 +8,29 @@
   <div id="menu">
     <h1>FullScreen</h1>
     message:<input type="text" id="message"><br>
-    color:<input type="text" id="color"><br>
+    color:<input type="text" id="color" value="red"><br>
     <button onclick="MyFullscreenStart()">open!</button>
   </div>
-  <div id="body"></div>
+  <div id="body" hidden></div>
 
   <script>
 function MyFullscreenStart(){
-  document.getElementById("body").hidden = false;
-  document.getElementById("body").innerHTML = document.getElementById("message").value;
+  document.getElementById("menu").hidden = true;
   document.body.style.backgroundColor = document.getElementById("color").value;
   document.body.style.color = "white";
   document.body.style.cursor = "none";
-  document.getElementById("menu").remove();
+  document.getElementById("body").hidden = false;
+  document.getElementById("body").innerHTML = document.getElementById("message").value;
+
+  document.body.addEventListener('keydown', function(e){
+    if(e.keyCode == 27 || (112 <= e.keyCode && 123 >= e.keyCode)){
+      MyFullscreen("r");
+    }
+    if(e.shiftKey && e.keyCode == 69){
+      MyFullscreen("e");
+    }
+  });
+
   MyFullscreen("r");
 }
 
