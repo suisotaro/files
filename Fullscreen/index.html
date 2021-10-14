@@ -21,16 +21,6 @@ function MyFullscreenStart(){
   document.body.style.cursor = "none";
   document.getElementById("body").hidden = false;
   document.getElementById("body").innerHTML = document.getElementById("message").value;
-
-  document.body.addEventListener('keydown', function(e){
-    if(e.keyCode == 27 || (112 <= e.keyCode && 123 >= e.keyCode)){
-      MyFullscreen("r");
-    }
-    if(e.shiftKey && e.keyCode == 69){
-      MyFullscreen("e");
-    }
-  });
-
   MyFullscreen("r");
 }
 
