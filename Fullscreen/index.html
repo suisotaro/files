@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>FullScreen</title>
+  <style>
+* {
+  cursor: none !important;
+}
+  </style>
+</head>
+<body>
+  <div id="menu">
+    <h1>FullScreen</h1>
+    message:<input type="text" id="message"><br>
+    color:<input type="text" id="color"><br>
+    <button onclick="MyFullscreenStart()">open!</button>
+  </div>
+  <div id="body"></div>
+
+  <script>
+function MyFullscreenStart(){
+  document.getElementById("body").hidden = false;
+  document.getElementById("body").innerHTML = document.getElementById("message").value;
+  document.body.style.backgroundColor = document.getElementById("color").value;
+  document.body.style.color = "white";
+  document.getElementById("menu").remove();
+  MyFullscreen("r");
+}
+
+function MyFullscreen(t){
+  if(t == "r"){ //request
+    // Chrome & Firefox v64以降
+    if(document.body.requestFullscreen) document.body.requestFullscreen();
+    // Firefox v63以前
+    else if(document.body.mozRequestFullScreen) document.body.mozRequestFullScreen();
+    // Safari & Edge & Chrome v44以前
+    else if(document.body.webkitRequestFullscreen) document.body.webkitRequestFullscreen();
+    // IE11
+    else if(document.body.msRequestFullscreen) document.body.msRequestFullscreen();
+  } else{
+    // Chrome & Firefox v64以降
+    if(document.exitFullscreen) document.exitFullscreen();
+    // Firefox v63以前
+    else if(document.mozCancelFullScreen) document.mozCancelFullScreen();
+    // Safari & Edge & Chrome v44以前
+    else if(document.webkitCancelFullScreen) document.webkitCancelFullScreen();
+    // IE11
+    else if(document.msExitFullscreen) document.msExitFullscreen();
+  }
+}
+  </script>
+</body>
+</html>
