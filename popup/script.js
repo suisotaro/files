@@ -1,5 +1,5 @@
 var x = 0, y = 0, win = [];
-for(var j = 1; j < 3; j++;){
+for(var j = 1; j < 3; j++){
   x = 0;
   for(var i = 0; i < 20; i++){
     x += 10;
