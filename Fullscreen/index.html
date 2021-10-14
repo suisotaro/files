@@ -4,12 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width" />
   <title>FullScreen</title>
-  <style>
-* {
-  cursor: none !important;
-}
-  </style>
-</head>
 <body>
   <div id="menu">
     <h1>FullScreen</h1>
@@ -25,6 +19,7 @@ function MyFullscreenStart(){
   document.getElementById("body").innerHTML = document.getElementById("message").value;
   document.body.style.backgroundColor = document.getElementById("color").value;
   document.body.style.color = "white";
+  document.body.style.cursor = "none";
   document.getElementById("menu").remove();
   MyFullscreen("r");
 }
