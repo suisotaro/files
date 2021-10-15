@@ -14,13 +14,40 @@
   <div id="body" hidden></div>
 
   <script>
+var end = 0, count = 0;
+function getSearchObj(searchStr) {
+  if (!searchStr) return {};
+  return searchStr
+    .substr(1)
+    .split("&")
+    .reduce((acc, cur) => {
+      acc[cur.split("=")[0]] = cur.split("=")[1];
+      return acc;
+    }, {});
+}
+const search = getSearchObj(location.search);
+document.getElementById("message").value = search.text;
 function MyFullscreenStart(){
   document.getElementById("menu").hidden = true;
-  document.body.style.backgroundColor = document.getElementById("color").value;
   document.body.style.color = "white";
   document.body.style.cursor = "none";
   document.getElementById("body").hidden = false;
   document.getElementById("body").innerHTML = document.getElementById("message").value;
+/*
+  document.body.addEventListener('keydown', function(e){
+    if(e.shiftKey && e.keyCode == 69){ //Shift + E
+      end = true;
+      MyFullscreen("e");
+    }
+  });
+
+  document.onfullscreenchange = document.onmozfullscreenchange = document.onwebkitfullscreenchange = document.onmsfullscreenchange = function (event){
+    count++;
+    if(count % 2 == 0 && !end){
+      MyFullscreen("r");
+    }
+  }
+*/
   MyFullscreen("r");
 }
 
