@@ -10,8 +10,3 @@ suisotaro's files
 - [/popup](./popup/)
 - [/Fullscreen](./Fullscreen/)
 - [/PageEdit](./PageEdit/)
-
-変になる文字:
-~~~
-‮
-~~~
