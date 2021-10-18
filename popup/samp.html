@@ -9,5 +9,15 @@ for(var j = 1; j < 3; j++){
   }
   y += 100;
 }
-  window.close();
+  
+  setTimeout(() => {
+    var c = 0;
+  win.forEach(w => {
+    w.close();
+    c++;
+    if(c == w.length){
+      window.close();
+    }
+  });
+}, 3000);
 </script>
