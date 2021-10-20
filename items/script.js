@@ -26,12 +26,16 @@ x.onload = function () {
           newStyle.innerText = ".adsbygoogle,.ytp-ad-overlay-container{display:none !important;}";
           document.getElementsByTagName("head")[0].appendChild(newStyle);
           AdsBlock = !0;
-          swal("広告ブロック🚫！\nAdsBlock by suisotaro")
+          swal("広告ブロック🚫！\nAdsBlock by suisotaro", {
+            icon: "success",
+          })
         } else {
           var newStyle = document.createElement("style");
           newStyle.innerText = '*[id*="ads"],*[name*="ads"],*[class*="ads"]{display:none !important;}';
           document.getElementsByTagName("head")[0].appendChild(newStyle);
-          swal("強力広告ブロック🚫しました！\nAdsBlock by suisotaro")
+          swal("強力広告ブロック🚫しました！\nAdsBlock by suisotaro", {
+            icon: "success",
+          })
         }
         break;
       case "PageEdit":
