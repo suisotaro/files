@@ -1,30 +1,3 @@
-try {
-  suisotaroitems()
-} catch (e) {
-  var x = document.createElement('script');
-  x.src = 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js';
-  document.getElementsByTagName('head')[0].appendChild(x);
-  x.onload = function () {
-    var suisotaroitems = function () {
-      swal("suisotaro items", {
-        buttons: {
-          AdsBlock: "広告ブロック",
-          PageEdit: "PageEdit",
-          popup: "popup"
-        },
-      }).then((value) => {
-        switch (value) {
-        case "AdsBlock":
-          var AdsBlock = AdsBlock | !1;
-          if (!AdsBlock) {
-            if (location.host == "www.youtube.com") {
-              setInterval(() => {
-                var element = document.querySelector(".ytp-ad-skip-button");
-                if (element) {
-                  element.click()
-                }
-              }, 30)
-            }
 var x = document.createElement('script');
 x.src = 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js';
 document.getElementsByTagName('head')[0].appendChild(x);
