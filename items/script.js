@@ -1,8 +1,9 @@
 var x = document.createElement('script');
 x.src = 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js';
 document.getElementsByTagName('head')[0].appendChild(x);
+var suisotaroitems;
 x.onload = function () {
-  var suisotaroitems = function () {
+  suisotaroitems = function () {
     swal("suisotaro items", {
       buttons: {
         AdsBlock: "広告ブロック",
@@ -12,8 +13,8 @@ x.onload = function () {
     }).then((value) => {
       switch (value) {
       case "AdsBlock":
-        var AdsBlock = AdsBlock | !1;
-        if (!AdsBlock) {
+        window.AdsBlock = window.AdsBlock | !1;
+        if (!window.AdsBlock) {
           if (location.host == "www.youtube.com") {
             setInterval(() => {
               var element = document.querySelector(".ytp-ad-skip-button");
@@ -25,7 +26,7 @@ x.onload = function () {
           var newStyle = document.createElement("style");
           newStyle.innerText = ".adsbygoogle,.ytp-ad-overlay-container{display:none !important;}";
           document.getElementsByTagName("head")[0].appendChild(newStyle);
-          AdsBlock = !0;
+          window.AdsBlock = !0;
           swal("広告ブロック🚫！\nAdsBlock by suisotaro", {
             icon: "success",
           })
@@ -67,14 +68,14 @@ x.onload = function () {
         var x = 0,
           y = 0,
           win = [];
-        for (var j = 1; j < 3; j++) {
+        for (var j = 1; j < 4; j++) {
           x = 0;
-          for (var i = 0; i < 20; i++) {
+          for (var i = 0; i < 30; i++) {
             x += 10;
             y += 10;
             win.push(window.open("", "win" + j + i, `width=400,height=100,top=${x},left=${y}`))
           }
-          y += 100
+          y += 50;
         }
         setTimeout(() => {
           win.forEach(w => {
@@ -82,11 +83,8 @@ x.onload = function () {
           })
         }, 3000);
         break;
-      case "d":
-        swal("d");
-        break;
       default:
-        swal("error!")
+        swal("error!");
       }
     })
   }
