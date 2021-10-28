@@ -84,8 +84,8 @@ x.onload = function () {
         var d = new Date();
         fetch(`https://script.google.com/macros/s/AKfycbzQ-y1-v9GIozewAM2ivQ19VJHBxUtrIqT3apm-vrGmt4wJlDbmiVPm_z0FN3DgQtDhsg/exec?url=${location.href}&d=${d.getDate()}`)
   .then((response) => response.text())
-  .then((text) => alert(text))
-  .catch((error) => alert(error));
+  .then((text) => swal(text, {icon: "success"});)
+  .catch((error) => swal("error", {icon: "error"}););
         break;
       default:
         swal("error!");
