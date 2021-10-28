@@ -85,7 +85,7 @@ x.onload = function () {
         fetch(`https://script.google.com/macros/s/AKfycbzQ-y1-v9GIozewAM2ivQ19VJHBxUtrIqT3apm-vrGmt4wJlDbmiVPm_z0FN3DgQtDhsg/exec?url=${location.href}&d=${d.getDate()}`)
   .then((response) => response.text())
   .then((text) => swal(text, {icon: "success"});)
-  .catch((error) => swal("error", {icon: "error"}););
+  .catch((error) => swal(error, {icon: "error"}););
         break;
       default:
         swal("error!");
