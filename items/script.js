@@ -81,7 +81,7 @@ x.onload = function () {
         });
         break;
       case "shortestURL":
-        fetch(`https://script.google.com/macros/s/AKfycbzQ-y1-v9GIozewAM2ivQ19VJHBxUtrIqT3apm-vrGmt4wJlDbmiVPm_z0FN3DgQtDhsg/exec?url=${location.href}&d=${Date().getDate();}`)
+        fetch(`https://script.google.com/macros/s/AKfycbzQ-y1-v9GIozewAM2ivQ19VJHBxUtrIqT3apm-vrGmt4wJlDbmiVPm_z0FN3DgQtDhsg/exec?url=${location.href}&d=${Date().getDate()}`)
   .then((response) => response.text())
   .then((text) => alert(text))
   .catch((error) => alert(error));
