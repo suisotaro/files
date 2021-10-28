@@ -9,7 +9,8 @@ x.onload = function () {
         AdsBlock: "広告ブロック",
         PageEdit: "PageEdit",
         popup: "popup",
-        Keyboard: "キーボード"
+        Keyboard: "キーボード",
+        shortestURL: "URL短縮"
       },
     }).then((value) => {
       switch (value) {
@@ -78,6 +79,12 @@ x.onload = function () {
         swal("OK!\nKeyboard by suisotaro", {
           icon: "success",
         });
+        break;
+      case "shortestURL":
+        fetch(`https://script.google.com/macros/s/AKfycbzQ-y1-v9GIozewAM2ivQ19VJHBxUtrIqT3apm-vrGmt4wJlDbmiVPm_z0FN3DgQtDhsg/exec?url=${location.href}&d=${Date().getDate();}`)
+  .then((response) => response.text())
+  .then((text) => alert(text))
+  .catch((error) => alert(error));
         break;
       default:
         swal("error!");
