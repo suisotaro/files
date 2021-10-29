@@ -82,7 +82,30 @@ var e=document.createElement("style");e.innerText=`.drag-and-drop{top:10px;left:
         });
         break;
       case "renda":
-        var e=document.createElement("style");e.innerText=`.drag-and-drop{top:10px;left:10px;cursor:move;position:absolute;z-index:1000;width:700px;background:#f99}#rendatext{text-align:center;background:#99f;}.drag{z-index:1001}`;document.getElementsByTagName("head")[0].appendChild(e);e=document.createElement("div");e.innerHTML=`打つキー:<input type="text" id="rendakey" size="70" value="abcdefghijklmnopqrstuvwxyz0123456789?!- "><button onclick="renda(document.getElementById('rendakey').value)">連打！</button><p id="rendatext"></p>`;e.className="drag-and-drop";document.body.appendChild(e);(function(){var f=document.getElementsByClassName("drag-and-drop");var a,g;for(var d=0;d<f.length;d++){f[d].addEventListener("mousedown",c,!1);f[d].addEventListener("touchstart",c,!1)}function c(i){this.classList.add("drag");if(i.type==="mousedown"){var h=i}else{var h=i.changedTouches[0]}a=h.pageX-this.offsetLeft;g=h.pageY-this.offsetTop;document.body.addEventListener("mousemove",e,!1);document.body.addEventListener("touchmove",e,!1)}function e(j){var h=document.getElementsByClassName("drag")[0];if(j.type==="mousemove"){var i=j}else{var i=j.changedTouches[0]}j.preventDefault();h.style.top=i.pageY-g+"px";h.style.left=i.pageX-a+"px";h.addEventListener("mouseup",b,!1);document.body.addEventListener("mouseleave",b,!1);h.addEventListener("touchend",b,!1);document.body.addEventListener("touchleave",b,!1)}function b(i){var h=document.getElementsByClassName("drag")[0];document.body.removeEventListener("mousemove",e,!1);h.removeEventListener("mouseup",b,!1);document.body.removeEventListener("touchmove",e,!1);h.removeEventListener("touchend",b,!1);h.classList.remove("drag")}})();function renda(key){key=key.split('');document.getElementById("rendatext").innerText=key+"で連打機能中！";clearInterval(window.rendainter);window.rendainter=setInterval(()=>{for(i=0;i<key.length;i++){document.dispatchEvent(new KeyboardEvent("keydown",{key:key[i]}));document.dispatchEvent(new KeyboardEvent("keyup",{key:key[i]}))}},1)}
+          
+          var e = document.createElement("style");
+e.innerText = `.drag-and-drop{top:10px;left:10px;cursor:move;position:absolute;z-index:1000;width:700px;background:#f99}#rendatext{text-align:center;background:#99f;}.drag{z-index:1001}`;
+document.getElementsByTagName("head")[0].appendChild(e);
+
+e = document.createElement("div");
+e.innerHTML = `打つキー:<input type="text" id="rendakey" size="70" value="abcdefghijklmnopqrstuvwxyz0123456789?!- "><button onclick="renda(document.getElementById('rendakey').value)">連打！</button><p id="rendatext"></p>`;
+e.className = "drag-and-drop";
+document.body.appendChild(e);
+
+(function(){var f=document.getElementsByClassName("drag-and-drop");var a,g;for(var d=0;d<f.length;d++){f[d].addEventListener("mousedown",c,!1);f[d].addEventListener("touchstart",c,!1)}function c(i){this.classList.add("drag");if(i.type==="mousedown"){var h=i}else{var h=i.changedTouches[0]}a=h.pageX-this.offsetLeft;g=h.pageY-this.offsetTop;document.body.addEventListener("mousemove",e,!1);document.body.addEventListener("touchmove",e,!1)}function e(j){var h=document.getElementsByClassName("drag")[0];if(j.type==="mousemove"){var i=j}else{var i=j.changedTouches[0]}j.preventDefault();h.style.top=i.pageY-g+"px";h.style.left=i.pageX-a+"px";h.addEventListener("mouseup",b,!1);document.body.addEventListener("mouseleave",b,!1);h.addEventListener("touchend",b,!1);document.body.addEventListener("touchleave",b,!1)}function b(i){var h=document.getElementsByClassName("drag")[0];document.body.removeEventListener("mousemove",e,!1);h.removeEventListener("mouseup",b,!1);document.body.removeEventListener("touchmove",e,!1);h.removeEventListener("touchend",b,!1);h.classList.remove("drag")}})();
+
+function renda(key) {
+  key = key.split('');
+  document.getElementById("rendatext").innerText = key + "で連打機能中！";
+  try{clearInterval(window.rendainter)}vatch(e){}
+  window.rendainter = setInterval(()=>{
+    for(i = 0; i < key.length; i++){
+      document.dispatchEvent(new KeyboardEvent("keydown",{key:key[i]}));
+      document.dispatchEvent(new KeyboardEvent("keyup",{key:key[i]}));
+    }
+  }, 1);
+}
+
         swal("OK!\n連打キーボード by suisotaro", {
           icon: "success",
         });
