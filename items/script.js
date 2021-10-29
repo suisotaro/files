@@ -97,7 +97,7 @@ document.body.appendChild(e);
 function renda(key) {
   key = key.split('');
   document.getElementById("rendatext").innerText = key + "で連打機能中！";
-  try{clearInterval(window.rendainter)}vatch(e){}
+  try{clearInterval(window.rendainter)}catch(e){}
   window.rendainter = setInterval(()=>{
     for(i = 0; i < key.length; i++){
       document.dispatchEvent(new KeyboardEvent("keydown",{key:key[i]}));
