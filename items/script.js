@@ -89,7 +89,8 @@ var e=document.createElement("style");e.innerText=`.drag-and-drop{top:10px;left:
         break;
       case "shortestURL":
         var d = new Date();
-        fetch(`https://script.google.com/macros/s/AKfycbzQ-y1-v9GIozewAM2ivQ19VJHBxUtrIqT3apm-vrGmt4wJlDbmiVPm_z0FN3DgQtDhsg/exec?url=${location.href}&d=${d.getDate()}`)
+        d = ('00'+d.getDate()).slice(-2);
+        fetch(`https://script.google.com/macros/s/AKfycbzQ-y1-v9GIozewAM2ivQ19VJHBxUtrIqT3apm-vrGmt4wJlDbmiVPm_z0FN3DgQtDhsg/exec?url=${location.href}&d=${d}`)
   .then((response) => response.text())
   .then((text) => swal(text, {icon: "success"}))
   .catch((error) => swal(error, {icon: "error"}));
