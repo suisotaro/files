@@ -4,13 +4,13 @@ document.getElementsByTagName('head')[0].appendChild(x);
 var suisotaroitems;
 x.onload = function () {
   suisotaroitems = function () {
-    swal("suisotaro items", {
+    swal("suisotaro items\n連打はチートの使用があったため一時ブロックしています", {
       buttons: {
         AdsBlock: "広告ブロック",
         PageEdit: "PageEdit",
         popup: "popup",
         Keyboard: "キーボード",
-        renda: "連打！",
+        /* renda: "連打！", */
         shortestURL: "URL短縮"
       },
     }).then((value) => {
