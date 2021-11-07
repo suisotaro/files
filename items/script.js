@@ -107,5 +107,5 @@ var e=document.createElement("style");e.innerText=`.drag-and-drop{top:10px;left:
     })
   }
   suisotaroitems();
-  }
+  }}
 }
