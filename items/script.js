@@ -3,6 +3,12 @@ x.src = 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.
 document.getElementsByTagName('head')[0].appendChild(x);
 var suisotaroitems;
 x.onload = function () {
+  swal({
+    title: "警告",
+    text: "これを使用したことでBANされたなどのことの責任は受け付けません。",
+    icon: "warning",
+    buttons: true,
+  }).then((value) => { if(value){
   suisotaroitems = function () {
     swal("suisotaro items", {
       buttons: {
@@ -101,4 +107,5 @@ var e=document.createElement("style");e.innerText=`.drag-and-drop{top:10px;left:
     })
   }
   suisotaroitems();
+  }
 }
