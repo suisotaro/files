@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>SSW</title>
+</head>
+<body>
+  <h1><span style="color:red;">SSW</span> suisotaro-secure-web</h1>
+
+  <div id="inputs">
+    <input type="url" id="url" value="https://google.com"><button onclick="go()">go!</button><br>
+  </div>
+  <div id="wait" hidden>
+    <p>お待ちください...</p>
+  </div>
+  <div id="ok" hidden>
+    <p>完了！</p>
+  </div>
+
+  <iframe id="iframe" width="100%" height="500px"></iframe>
+
+<script>
+function $(id){return document.getElementById(id)}
+function go(){
+  var url = $("url").value;
+  $("inputs").hidden = true;
+  $("wait").hidden = false;
+  fetch(`https://script.google.com/macros/s/AKfycbzoAU_MbA08wbao2ydL6cqRxvBQ0dqr4E1siKQnYjC6-asdP9Fxodw2AtfNXiI0E4cY/exec?url=${url}`)
+  .then(res => res.text())
+  .then(html => {
+    $("wait").hidden = true;
+    $("ok").hidden = false;
+    //alert("ok!");
+    //document.write(html);
+    $("iframe").contentWindow.document.write(html);
+  });
+}
+</script>
+</body>
+</html>
