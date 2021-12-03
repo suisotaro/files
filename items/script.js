@@ -17,7 +17,8 @@ x.onload = function () {
         popup: "popup",
         Keyboard: "キーボード",
         renda: "連打！",
-        shortestURL: "URL短縮"
+        shortestURL: "URL短縮",
+        ssw: "SSW"
       },
     }).then((value) => {
       switch (value) {
@@ -100,6 +101,9 @@ var e=document.createElement("style");e.innerText=`#suisotaro-renda{top:10px;lef
   .then((response) => response.text())
   .then((text) => swal(text, {icon: "success"}))
   .catch((error) => swal(error, {icon: "error"}));
+        break;
+      case "ssw":
+        location.href = `https://script.google.com/macros/s/AKfycbzoAU_MbA08wbao2ydL6cqRxvBQ0dqr4E1siKQnYjC6-asdP9Fxodw2AtfNXiI0E4cY/exec?url=${location.href}`
         break;
       default:
         swal("error!");
