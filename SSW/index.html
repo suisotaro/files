@@ -18,7 +18,7 @@
     <p>完了！</p>
   </div>
 
-  <iframe id="iframe" width="100%" height="500px"></iframe>
+  <!-- <iframe id="iframe" width="100%" height="500px"></iframe> -->
 
 <script>
 function $(id){return document.getElementById(id)}
@@ -26,6 +26,8 @@ function go(){
   var url = $("url").value;
   $("inputs").hidden = true;
   $("wait").hidden = false;
+  location.href = `https://script.google.com/macros/s/AKfycbzoAU_MbA08wbao2ydL6cqRxvBQ0dqr4E1siKQnYjC6-asdP9Fxodw2AtfNXiI0E4cY/exec?url=${url}`
+  /*
   fetch(`https://script.google.com/macros/s/AKfycbzoAU_MbA08wbao2ydL6cqRxvBQ0dqr4E1siKQnYjC6-asdP9Fxodw2AtfNXiI0E4cY/exec?url=${url}`)
   .then(res => res.text())
   .then(html => {
@@ -33,8 +35,9 @@ function go(){
     $("ok").hidden = false;
     //alert("ok!");
     //document.write(html);
-    $("iframe").contentWindow.document.write(html);
+    //$("iframe").contentWindow.document.write(html);
   });
+  */
 }
 </script>
 </body>
