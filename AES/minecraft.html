@@ -34,7 +34,7 @@
                    placeholder="passphrase"
                    autofocus/>
 
-            <input type="submit" class="staticrypt-decrypt-button" value="DECRYPT"/>
+            <input id="staticrypt-submitbtn" type="submit" class="staticrypt-decrypt-button" value="DECRYPT"/>
         </form>
     </div>
 
@@ -91,6 +91,8 @@
         document.write(plainHTML);
         document.close();
     });
+    document.getElementById('staticrypt-password').value = location.hash;
+    document.getElementById('staticrypt-submitbtn').click();
 </script>
 </body>
 </html>
