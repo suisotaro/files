@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ページはロックされています</title>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js" integrity="sha384-lp4k1VRKPU9eBnPePjnJ9M2RF3i7PC30gXs70+elCVfgwLwx1tv5+ctxdtwxqZa7" crossorigin="anonymous"></script>
+
+<script>
+
+    /**
+     * Decrypt a salted msg using a password.
+     * Inspired by https://github.com/adonespitogo
+     */
+    var keySize = 256;
+    var iterations = 1000;
+    function decrypt (encryptedMsg, pass) {
+        var salt = CryptoJS.enc.Hex.parse(encryptedMsg.substr(0, 32));
+        var iv = CryptoJS.enc.Hex.parse(encryptedMsg.substr(32, 32))
+        var encrypted = encryptedMsg.substring(64);
+
+        var key = CryptoJS.PBKDF2(pass, salt, {
+            keySize: keySize/32,
+            iterations: iterations
+        });
+
+        var decrypted = CryptoJS.AES.decrypt(encrypted, key, {
+            iv: iv,
+            padding: CryptoJS.pad.Pkcs7,
+            mode: CryptoJS.mode.CBC
+        }).toString(CryptoJS.enc.Utf8);
+        return decrypted;
+    }
+
+(function () {
+        var passphrase = location.hash,
+            encryptedMsg = 'bea572d73d61013f4b54c10b9653057e6f4b341b74383978b4131d155d8a337ead6263786bef7b98c7d9013c63e2263d3a4db91c30c1ab3d9eb9b606703e56a6CFz77NmWsVxA9WJJ17fphdXRoNLMsarWjSepV6f9qDHpKwl79l4rgk84gM/nvHsbR8SwkWxE/oTcXmwAJL1YbDPmjrcQiztvuU750RvE1mqhIyZp5JaX0xV4JKQIo3xsPateJ/v9cj89oJQM3MXL76pSuZ3dcQ/xsu+PCDKb/YuZCOOowvEilXievLO+5YEI3oT1VZyrl+J8lDFbmKRXml+6Uh/ZITYAfI6NQxx0DYHg9Aq/92m0F459l9m8Ij6RljglbtkyP5lfLRJHBl8i7S2Y3dpuowJw57jbd3flWG0yJRtCqP11HkA0/M+F0qa5uS1xtz9lYxL3gt2f4CGfVSLF+zOx6DQ0s7sAAiiIcWU0uHgTI8pOBMUxX+d0oIqP0c0KZ7O0+ydFr4WfkuHJeI31ub6qTGB5AcaZTEL9vRxF5wVTtWIJCLfxwpcg140bYj75t/yV7kBlZpEj8Hf5vmUAAHkuZDOaFd8xL+3GG8otXNCNVZvPw/FXPpG9oxw1/eW1ayT6C5YqR5yHyFQABdXbRihN9Mr39bZCnKnstHfZZdPj/fUkraHeHRfOJgjL94xwHyaUkn5WC6wyd4j1O1kTo0+DBch3lp5ipclcTv3HHPmAaZTghJ1YF14j2aZG7f+MlYimcT2sLW8h+hl4MP0FUVOA1f0Xa7bQIvl6usBvbiAiTA8wqO4qWRw18vPEHGBoCDpeP3IZLeLRcrOSRRY/5eORhBA4amsSQkoa1LtP5r0zOt7dRHNsfmoPuMyudyeYiHy19nVf+WeWSYJrBsJtGMNVVKCUsosXxQqQxcW0Oxga9Cee9mr58k8AqJUZp0BJpAnZin5bOf8uZ9vzyMyAfmX1sS2xeDKDkZlHNEE2dKO5ynoRzTUA0ldkr6AlMzZIstqJZTaAyGgz7TzALsFmO6W29ZLIcUpiNdOOOmXEucPu+F3rhoVRXeq5DzeIRoyaasaDM7AmwnBC9pAAYifEaysXgbSY2Bv3jaQ/pvZv/0pfpCl5Q2I26QFAlXBXJ4uNYSwsh0SgPanqO8qYb4N7wLkYYy5yxtpOzfyqx0FaysalsbMqYMzamPaE+m+nqGuDpuOXtEi+NAoHILaTwCLgNRFtVBiaSvL9H3HP2Yh1jpAfFRaR0D+0m7P8wY9FeFeuPRuiFbBpoEuwqidsKzINYxE946Bmxs9uR6Ge74NaYlGWRNDZK/usBHvPpkFw9f3xmGk4Q3Dqsn9lXl+NUlW5QFtXFhN2GYN5fmnt1EqRSMcjpyFzkJvCwvYR8pOwJ/oPSBfynb50mQa1Pehn8Ifz/WGe8cndc3yN/8LXM88rS6O73akYbV4zAg8shCI0giZs+JZjYuF4tModzgl4JnpYGnkbg4FKhljF/TYPyy765ZiS/DDHj2UKJWZPuVjeKZDZR6eBWrOSOZovPMDaXVD1x6enE92BcUNeSDYoOQWcLGRlJCWivPfEIViga8GHCq4y70Ipgr5hBOjlYd0hYSSkwPlZ+Wj+mv0I9ZuPJmBS2rS7yf5XyYOHJWHdwYo5psUwG2VdI0Wb/ANfEvx1O0qaDwwcT2xgSC5CeipyGTl646JX+wph01euKDAi7qDKUyhbxLpOfaRGO62yWSbHe52wldgMtAKAaASkcNfB3jugmrzeDHq3+lXLupiMXXRW1VlW1UsGL2TkmxK9fsBpy7COiNkNeqemfkUVHkLUDH5Re6H7Xvhbl727XvEN0/jismY7T7c0FwOf63HVdjKe6n+k9/+2FkJBZkGC+a2IhAf99HPDywp7+g6TNWG1IZbSGYM+Vhb2Mi9rihqz03Iv3Thd1rjHj5nxYGC1OClq8+QqffdPdW1z7xtNFSvYfiI4H2LFrRqBzYPLq/BmyqnwQnD79PgqbC4rRpoBG5eLL+AOlqOXqbQMH0hCTkUXZBRUuYTMqothufa18/oZ1v3oFwBki4zulJt0R7ApwwwaEauXKcFQl30dR/0DQ3TccnNilFhp9bJONeylkhBODbA6QNuQEFNy34PdtLQrK6WtCMHCzJFH+74Uze+sRQq99x3u5a6AJRTfjO1TFIZmgArMbwZK3S7Us9phQN3OPO6y3rbtBDVA6ZkoyKPTAdwAb1ZEfdCpK5wmZEC985qdFJAYOgDGINAKUP1S03wqBaBUwWwAa/KYIgvSV7iaa5vl/DZW6Kz1HAOciXXng/zh3el/gEBfhivM4US0sWixkqqd5fb2rGTI5E4xCcRN4zcRbcqtgiTY8+TG5EPSrUFzpw14X0dpGk8KwMV+7YVcj5UpxiK5/66noRO49r9IGbvJ6tjNz6gK/GrvzfGp/WEbJJiD6GeDNmYM+4SBg47+se+lAnBYrIuHrxjz/1ulHYM/6kWzv845fPpIv+DpNCe/ILlVCPgVvC5Zb8FXNTTK/f+IRLq6zv/+EZWc63rfAPuxsKciNCHcKVgf/yJ49W01QCBhboD504UPwzHnoXw0zcQEitFAivFoUlbrmIGfaJd5wIToN8NNMTjSpVhfNv9RMTlNRT4jc0hBYDRSSkXy3EvsA5Sy9FbSx1HXmASvrOGySR7aboUqr9s2hNdEKg9qoDsr8O0/KzjJQL5MhEUk3gff239a9JyDgf3wrsS9G9ox/6vYxwa26GE8mn4FegXmLA6SrUApsLmGUwiP8bY77H6r81ZG5AuzokqFXsW9tfmCNe73y1B4wpfmjcn93thHk/V7kl23LKkAhRsCdgFtUslqazXa2pH1ilD6bCwecr0gG2DvlMa5TmWfqhDk0j9ztXG6GKjLLndQtzLdI6ggJsfRhFndyDnwlFwKANNrwZ1d0dtxSOGNe01Vtx7JjbMGzy1EubjithIaFdx+o41snNi7Xf4E+MXldpnM3YIKc0/9V0kBuzFsItlIHL0NoOHZHSQaRe+w9y2zKPbB1LgyJ4XkWOQ=',
+            encryptedHMAC = encryptedMsg.substring(0, 64),
+            encryptedHTML = encryptedMsg.substring(64),
+            decryptedHMAC = CryptoJS.HmacSHA256(encryptedHTML, CryptoJS.SHA256(passphrase).toString()).toString();
+
+        if (decryptedHMAC !== encryptedHMAC) {
+            alert('パスワードが違います！');
+            return;
+        }
+
+        var plainHTML = decrypt(encryptedHTML, passphrase);
+
+        document.write(plainHTML);
+        document.close();
+})();
+</script>
+</body>
+</html>
