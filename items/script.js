@@ -16,9 +16,7 @@ x.onload = function () {
         PageEdit: "PageEdit",
         popup: "popup",
         Keyboard: "キーボード",
-        renda: "連打！",
-        shortestURL: "URL短縮",
-        ssw: "SSW"
+        renda: "連打！"
       },
     }).then((value) => {
       switch (value) {
@@ -93,17 +91,6 @@ var e=document.createElement("style");e.innerText=`#suisotaro-renda{top:10px;lef
         swal("OK!\n連打キーボード by suisotaro", {
           icon: "success",
         });
-        break;
-      case "shortestURL":
-        var d = new Date();
-        d = ('00'+d.getDate()).slice(-2);
-        fetch(`https://script.google.com/macros/s/AKfycbzQ-y1-v9GIozewAM2ivQ19VJHBxUtrIqT3apm-vrGmt4wJlDbmiVPm_z0FN3DgQtDhsg/exec?url=${location.href}&d=${d}`)
-  .then((response) => response.text())
-  .then((text) => swal(text, {icon: "success"}))
-  .catch((error) => swal(error, {icon: "error"}));
-        break;
-      case "ssw":
-        location.href = `https://script.google.com/macros/s/AKfycbzoAU_MbA08wbao2ydL6cqRxvBQ0dqr4E1siKQnYjC6-asdP9Fxodw2AtfNXiI0E4cY/exec?url=${location.href}`
         break;
       default:
         swal("error!");
